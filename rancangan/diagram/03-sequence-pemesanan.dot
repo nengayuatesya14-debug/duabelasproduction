@@ -1,0 +1,21 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad=0.4, label="Sequence Diagram Pemesanan dan Pembayaran", labelloc=t, fontsize=20, fontname="Arial Bold", nodesep=.45, ranksep=.6];
+  node [shape=box, style="rounded,filled", fillcolor="#f8f3e8", color="#c79a45", fontname="Arial"];
+  edge [fontname="Arial", fontsize=9, color="#22384f"];
+  customer [label="Pelanggan"];
+  web [label="Website"];
+  db [label="Database MySQL"];
+  admin [label="Admin"];
+  customer -> web [label="Pilih paket & isi pemesanan"];
+  web -> db [label="Cek ketersediaan tanggal"];
+  db -> web [label="Tanggal tersedia"];
+  web -> db [label="Simpan pemesanan"];
+  db -> web [label="Kode pemesanan"];
+  web -> customer [label="Tampilkan detail & DP"];
+  customer -> web [label="Unggah bukti pembayaran"];
+  web -> db [label="Simpan pembayaran"];
+  db -> admin [label="Pembayaran menunggu verifikasi"];
+  admin -> web [label="Verifikasi pembayaran"];
+  web -> db [label="Update status & buat jadwal"];
+  db -> customer [label="Status pesanan dikonfirmasi"];
+}

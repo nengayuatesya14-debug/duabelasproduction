@@ -1,0 +1,15 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad=0.5, label="Arsitektur Sistem Localhost", labelloc=t, fontsize=20, fontname="Arial Bold"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10, margin=.18];
+  user [label="Pelanggan / Admin\nBrowser", fillcolor="#f3e6c8", color="#c79a45"];
+  apache [label="XAMPP - Apache\nlocalhost/duabelas_fotografi", fillcolor="#dfe8ef", color="#22384f"];
+  php [label="Aplikasi PHP Native\nHTML + CSS + JavaScript", fillcolor="#edf4ea", color="#1f7a4d"];
+  mysql [shape=cylinder, label="MySQL\nduabelas_fotografi", fillcolor="#e8eef5", color="#316b8f"];
+  uploads [shape=folder, label="Folder Upload\nPaket, Galeri, Pembayaran", fillcolor="#fff2d9", color="#a66a12"];
+  sublime [label="Sublime Text\nEditor Kode", fillcolor="#f7e6e6", color="#b44141"];
+  user -> apache [label="HTTP"];
+  apache -> php [label="Eksekusi PHP"];
+  php -> mysql [label="PDO / SQL"];
+  php -> uploads [label="Simpan / Baca file"];
+  sublime -> php [label="Edit source code", style=dashed];
+}

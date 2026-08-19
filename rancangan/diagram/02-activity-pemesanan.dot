@@ -1,0 +1,24 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad=0.4, label="Activity Diagram Pemesanan", labelloc=t, fontsize=20, fontname="Arial Bold"];
+  node [shape=box, style="rounded,filled", fillcolor="#f8f3e8", color="#c79a45", fontname="Arial", fontsize=10];
+  edge [color="#22384f", fontname="Arial", fontsize=9];
+  start [shape=circle, width=.25, label="", fillcolor="#22384f", color="#22384f"];
+  login [label="Pelanggan login"];
+  choose [label="Memilih paket fotografi"];
+  form [label="Mengisi tanggal, waktu, lokasi, dan catatan"];
+  check [shape=diamond, label="Tanggal tersedia?", fillcolor="#dfe8ef", color="#22384f"];
+  save [label="Sistem menyimpan pemesanan\nstatus: menunggu pembayaran"];
+  upload [label="Pelanggan mengunggah bukti DP"];
+  verify [shape=diamond, label="Pembayaran valid?", fillcolor="#dfe8ef", color="#22384f"];
+  reject [label="Pembayaran ditolak\nPelanggan unggah ulang", fillcolor="#fdeaea", color="#b44141"];
+  confirm [label="Pesanan dikonfirmasi\ndan jadwal dibuat", fillcolor="#e5f5ed", color="#1f7a4d"];
+  done [shape=doublecircle, width=.35, label="", fillcolor="#22384f", color="#22384f"];
+  start -> login -> choose -> form -> check;
+  check -> form [label="Tidak"];
+  check -> save [label="Ya"];
+  save -> upload -> verify;
+  verify -> reject [label="Tidak"];
+  reject -> upload;
+  verify -> confirm [label="Ya"];
+  confirm -> done;
+}

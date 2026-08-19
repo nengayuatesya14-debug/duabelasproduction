@@ -1,0 +1,19 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad=0.5, label="Entity Relationship Diagram", labelloc=t, fontsize=20, fontname="Arial Bold", nodesep=.6, ranksep=.8];
+  node [shape=record, style="filled", fillcolor="#f8f3e8", color="#22384f", fontname="Arial", fontsize=9];
+  edge [color="#c79a45", penwidth=1.5, fontname="Arial", fontsize=9];
+  users [label="{USERS|PK id\lname\lemail\lpassword\lrole\lstatus\l}"];
+  packages [label="{PACKAGES|PK id\lname\lcategory\lprice\ldp_percentage\lduration_hours\lstatus\l}"];
+  bookings [label="{BOOKINGS|PK id\lbooking_code\lFK user_id\lFK package_id\levent_date\lstart_time\ltotal_price\lstatus\l}"];
+  payments [label="{PAYMENTS|PK id\lFK booking_id\lFK verified_by\lamount\lproof\lverification_status\l}"];
+  schedules [label="{SCHEDULES|PK id\lFK booking_id\levent_date\lstart_time\lend_time\lstatus\l}"];
+  gallery [label="{GALLERY|PK id\ltitle\lcategory\lphoto\lstatus\l}"];
+  reports [label="{REPORTS|PK id\lperiod_start\lperiod_end\ltotal_bookings\ltotal_revenue\lFK created_by\l}"];
+  users -> bookings [label="1 : N"];
+  packages -> bookings [label="1 : N"];
+  bookings -> payments [label="1 : N"];
+  bookings -> schedules [label="1 : 0..1"];
+  users -> payments [label="admin 1 : N", style=dashed];
+  users -> reports [label="admin 1 : N", style=dashed];
+  gallery [fillcolor="#dfe8ef"];
+}

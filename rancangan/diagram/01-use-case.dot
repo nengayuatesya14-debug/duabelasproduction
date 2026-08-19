@@ -1,0 +1,25 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad=0.4, nodesep=0.35, ranksep=0.8, label="Use Case Sistem Pemesanan Jasa Fotografi", labelloc=t, fontsize=20, fontname="Arial Bold"];
+  node [fontname="Arial", fontsize=10];
+  edge [fontname="Arial", color="#506273"];
+  customer [shape=box, style="rounded,filled", fillcolor="#f3e6c8", color="#c79a45", label="PELANGGAN"];
+  admin [shape=box, style="rounded,filled", fillcolor="#dfe8ef", color="#22384f", label="ADMIN"];
+  subgraph cluster_system {
+    label="Website Dua Belas Production"; color="#22384f"; style="rounded";
+    reg [shape=ellipse, label="Registrasi & Login"];
+    catalog [shape=ellipse, label="Lihat Paket & Galeri"];
+    booking [shape=ellipse, label="Buat Pemesanan"];
+    payment [shape=ellipse, label="Unggah Pembayaran"];
+    track [shape=ellipse, label="Pantau Status"];
+    profile [shape=ellipse, label="Kelola Profil"];
+    packages [shape=ellipse, label="Kelola Paket"];
+    bookings [shape=ellipse, label="Kelola Pemesanan"];
+    verify [shape=ellipse, label="Verifikasi Pembayaran"];
+    schedule [shape=ellipse, label="Kelola Jadwal"];
+    gallery [shape=ellipse, label="Kelola Galeri"];
+    customers [shape=ellipse, label="Kelola Pelanggan"];
+    report [shape=ellipse, label="Cetak Laporan"];
+  }
+  customer -> {reg catalog booking payment track profile};
+  admin -> {reg packages bookings verify schedule gallery customers report};
+}
